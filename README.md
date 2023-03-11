@@ -1,29 +1,10 @@
 # Audioflow to MQTT Gateway
 
-audioflow2mqtt enables local control of your Audioflow speaker switch(es) via MQTT. It supports Home Assistant MQTT discovery for easy integration. It can also automatically discover the Audioflow devices on your network via UDP discovery, or you can specify the IP address of the Audioflow devices if you don't want to use UDP discovery.
+This is the Home Assistant add-on version of [audioflow2mqtt](https://github.com/Tediore/audioflow2mqtt-addon). audioflow2mqtt enables local control of your Audioflow speaker switch(es) via MQTT. It supports Home Assistant MQTT discovery for easy integration. It can also automatically discover the Audioflow devices on your network via UDP discovery, or you can specify the IP address of the Audioflow devices if you don't want to use UDP discovery.
 
 <br>
 
 # Configuration
-audioflow2mqtt can be configured using environment variables or by using a configuration file named **config.yaml**. Example config.yaml with all possible configuration options:
-```yaml
-mqtt:
-  host: 10.0.0.2
-  port: 1883
-  user: user
-  password: password
-  qos: 1
-  base_topic: audioflow2mqtt
-  home_assistant: True
-
-general:
-  devices:
-  - 10.0.1.100
-  - 10.0.1.101
-  discovery_port: 54321
-  log_level: debug
-```
-
 **Configuration options:**
 
 | Variable | Default | Required | Description |
@@ -32,99 +13,9 @@ general:
 | `MQTT_PORT` | 1883 | True | The port the MQTT broker is bound to. |
 | `MQTT_USER` | None | False | The user to send to the MQTT broker. |
 | `MQTT_PASSWORD` | None | False | The password to send to the MQTT broker. |
-| `MQTT_QOS` | 1 | False | The MQTT QoS level. |
 | `BASE_TOPIC` | audioflow2mqtt | True | The topic prefix to use for all payloads. |
-| `HOME_ASSISTANT` | True | False | Set to `True` to enable Home Assistant MQTT discovery or `False` to disable. |
-| `DEVICES` | None | Depends* | IP address(es) of your Audioflow device(s). If using environment variables, must be a comma-separated string (if multiple); otherwise, it must be a list. <br>\* Required if you don't plan to use UDP discovery. |
-| `DISCOVERY_PORT` | 54321 | False | The port to open on the host to send/receive UDP discovery packets. |
+| `DEVICES` | None | True | IP address(es) or hostname(s) of your Audioflow device(s). |
 | `LOG_LEVEL` | info | False | Set minimum log level. Valid options are `debug`, `info`, `warning`, and `error` |
-
-<br>
-
-# How to run
-
-**Docker via `docker-compose` with config.yaml**
-
-1. Create your docker-compose.yaml (or add to existing). Example docker-compose.yaml:
-```yaml
-version: '3'
-services:
-  audioflow2mqtt:
-    container_name: audioflow2mqtt
-    image: tediore/audioflow2mqtt:stable
-    volumes:
-    - /path/to/config.yaml:/config.yaml
-    restart: unless-stopped
-    network_mode: host # only required if devices option is not set in config.yaml
-```
-2. `docker-compose up -d audioflow2mqtt`
-
-<br>
-
-**Docker via `docker run` with config.yaml**
-
-Example `docker run` command:
-```
-docker run --name audioflow2mqtt \
--v /path/to/config.yaml:/config.yaml \
---network host \ # only required if devices option is not set in config.yaml
-tediore/audioflow2mqtt:stable
-```
-
-<br>
-
-**Docker via `docker-compose` without config.yaml**
-
-1. Create your docker-compose.yaml (or add to existing). Example docker-compose.yaml with all environmental variables:
-```yaml
-version: '3'
-services:
-  audioflow2mqtt:
-    container_name: audioflow2mqtt
-    image: tediore/audioflow2mqtt:stable
-    environment:
-    - MQTT_HOST=10.0.0.2
-    - MQTT_PORT=1883
-    - MQTT_USER=user
-    - MQTT_PASSWORD=password
-    - MQTT_QOS=1
-    - BASE_TOPIC=audioflow2mqtt
-    - HOME_ASSISTANT=True
-    - DEVICES=10.0.1.100,10.0.1.101
-    - DISCOVERY_PORT=54321
-    - LOG_LEVEL=debug
-    restart: unless-stopped
-    network_mode: host # only required if DEVICES variable is not set
-```
-2. `docker-compose up -d audioflow2mqtt`
-
-<br>
-
-**Docker via `docker run` without config.yaml**
-
-Example `docker run` command with all environment variables:
-```
-docker run --name audioflow2mqtt \
--e MQTT_HOST=10.0.0.2 \
--e MQTT_PORT=1883 \
--e MQTT_USER=user \
--e MQTT_PASSWORD=password \
--e MQTT_QOS=1 \
--e BASE_TOPIC=audioflow2mqtt \
--e HOME_ASSISTANT=True \
--e DEVICES=10.0.1.100,10.0.1.101 \
--e LOG_LEVEL=debug \
---network host \ # only required if DEVICES variable is not set
-tediore/audioflow2mqtt:stable
-```
-
-<br>
-
-**Bare metal (not recommended)**
-1. Set the necessary environment variables or create config.yaml
-2. `git clone https://github.com/Tediore/audioflow2mqtt`
-3. `cd audioflow2mqtt`
-4. `python3 audioflow2mqtt.py`
 
 <br>
 
@@ -181,17 +72,4 @@ Network info is published to the following topics:
 **RSSI:** `audioflow2mqtt/0123456789/network_info/rssi`
 
 <br>
-
-# Important notes
-When running separate instances for multiple devices, you will need to set a **different base topic for each instance**. Also, while audioflow2mqtt does support UDP discovery of Audioflow devices, creating a DHCP reservation for your Audioflow device(s) and setting `DEVICES` is recommended. UDP discovery will only work if the Audioflow device is on the same subnet as the machine audioflow2mqtt is running on.
-
-<br>
 <a href="https://www.buymeacoffee.com/tediore" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-<br>
-
-# TODO
-1. ~~Handle Audioflow device disconnects/reconnects~~
-2. Add support for re-discovery of Audioflow switch if its IP address changes
-3. ~~Add support for multiple Audioflow switches? Not sure how many people would have more than one.~~
-4. You tell me!
