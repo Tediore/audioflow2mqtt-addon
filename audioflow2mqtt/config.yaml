@@ -1,6 +1,6 @@
 name: audioflow2mqtt
 description: Audioflow speaker switch to MQTT gateway
-version: 0.7.0-addon
+version: 0.7.0a
 slug: audioflow2mqtt
 init: false
 arch:
