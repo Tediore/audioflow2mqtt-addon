@@ -1,0 +1,15 @@
+configuration:
+  mqtt_host:
+    name: MQTT host
+  mqtt_port:
+    name: MQTT port
+  mqtt_user:
+    name: MQTT username
+  mqtt_pass:
+    name: MQTT password
+  base_topic:
+    name: MQTT base topic
+  devices:
+    name: Device IP addresses or hostnames
+  log_level:
+    name: Log level
