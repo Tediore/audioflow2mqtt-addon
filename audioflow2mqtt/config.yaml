@@ -1,6 +1,6 @@
 name: audioflow2mqtt
 description: Audioflow speaker switch to MQTT gateway
-version: 0.7.0a
+version: "tediore/0.7.0a"
 slug: audioflow2mqtt
 init: false
 arch:
@@ -11,6 +11,7 @@ arch:
 discovery:
 - mqtt
 url: https://github.com/Tediore/audioflow2mqtt-addon
+image: "tediore/audioflow2mqtt-addon-{arch}"
 
 options:
   mqtt_host: core-mosquitto
