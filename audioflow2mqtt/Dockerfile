@@ -1,5 +1,4 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM alpine:3
 
 ADD audioflow2mqtt.py /
 
