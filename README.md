@@ -5,17 +5,16 @@ This is the Home Assistant add-on version of [audioflow2mqtt](https://github.com
 <br>
 
 # Configuration
-**Configuration options:**
 
-| Variable | Default | Required | Description |
-|----------|---------|----------|-------------|
-| `MQTT_HOST` | None | True |IP address or hostname of the MQTT broker to connect to. |
-| `MQTT_PORT` | 1883 | True | The port the MQTT broker is bound to. |
-| `MQTT_USER` | None | False | The user to send to the MQTT broker. |
-| `MQTT_PASSWORD` | None | False | The password to send to the MQTT broker. |
-| `BASE_TOPIC` | audioflow2mqtt | True | The topic prefix to use for all payloads. |
-| `DEVICES` | None | True | IP address(es) or hostname(s) of your Audioflow device(s). |
-| `LOG_LEVEL` | info | False | Set minimum log level. Valid options are `debug`, `info`, `warning`, and `error` |
+| Variable | Default | Description |
+|----------|---------|-------------|
+| MQTT host | core-mosquitto | IP address or hostname of the MQTT broker to connect to. |
+| MQTT port | 1883 | The port the MQTT broker is bound to. |
+| MQTT username | None | The user to send to the MQTT broker. |
+| MQTT password | None | The password to send to the MQTT broker. |
+| MQTT base topic | audioflow2mqtt | The topic prefix to use for all payloads. |
+| Devices | None | IP address(es) or hostname(s) of your Audioflow device(s). |
+| Log level | info | Minimum log level. |
 
 <br>
 
