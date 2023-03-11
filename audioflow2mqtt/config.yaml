@@ -11,7 +11,7 @@ arch:
 discovery:
 - mqtt
 url: https://github.com/Tediore/audioflow2mqtt-addon
-image: "audioflow2mqtt-addon-{arch}"
+image: "tediore/audioflow2mqtt-addon-{arch}"
 
 options:
   mqtt_host: core-mosquitto
