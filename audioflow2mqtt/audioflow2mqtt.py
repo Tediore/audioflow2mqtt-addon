@@ -1,13 +1,14 @@
-import os
-import sys
+import aiomqtt
+import asyncio
+import httpx
 import json
-import yaml
-import socket
 import logging
-import requests
+import os
+import socket
+import sys
 from time import sleep
 from threading import Thread as t
-import paho.mqtt.client as mqtt_client
+import yaml
 
 version = '0.9.0-addon'
 
