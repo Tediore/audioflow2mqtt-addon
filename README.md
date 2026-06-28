@@ -5,11 +5,12 @@ This is the Home Assistant add-on version of [audioflow2mqtt](https://github.com
 <br>
 
 # Adding to Home Assistant
-1. Go to the add-on store in Home Assistant.
+1. Go to the App store in Home Assistant.
 2. Click the three dots in the upper right.
 3. Click **Repositories**.
-4. Paste in **https://github.com/Tediore/audioflow2mqtt-addon** and click **ADD**.
-5. Click **CLOSE** and refresh the page; the add-on should now be visible.
+4. Click **+ Add**.
+5. Paste in **https://github.com/Tediore/audioflow2mqtt-addon** and click **Add**.
+6. Click **CLOSE** and go back to the App store; audioflow2mqtt should now be visible.
 
 <br>
 
