@@ -1,6 +1,6 @@
 # Audioflow to MQTT Gateway
 
-This is the Home Assistant add-on version of [audioflow2mqtt](https://github.com/Tediore/audioflow2mqtt-addon). audioflow2mqtt enables local control of your Audioflow speaker switch(es) via MQTT. It supports Home Assistant MQTT discovery for easy integration.
+This is the Home Assistant App (formerly add-on) version of [audioflow2mqtt](https://github.com/Tediore/audioflow2mqtt-addon). audioflow2mqtt enables local control of your Audioflow speaker switch(es) via MQTT. It supports Home Assistant MQTT discovery for easy integration.
 
 <br>
 
